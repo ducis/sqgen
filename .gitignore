@@ -11,3 +11,4 @@ sqgen.hs
 lexer.hs
 tables.sql
 commited.sql
+sqgen

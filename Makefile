@@ -8,8 +8,9 @@ lexer: SimpleLexer.x
 	ghc -O2 lexer
 tables.sql: sqgen test.sqg
 	./sqgen < test.sqg > tables.sql
-commit: sql_prep.sql tables.sql sql_post.sql
-	cat $< >commited.sql
-	mysql<commited.sql
+commited.sql: sql_prep.sql tables.sql sql_post.sql
+	cat $^ >$@
+commit-mysql: commited.sql
+	mysql<$<
 clean: .FORCE 
 	rm -f SimpleLexer.hs sqgen.hs *.hi *.o
