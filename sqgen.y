@@ -39,20 +39,20 @@ src 	: {df ""}
 		}
 
 attr::{ (Int,St,St) }
-attr	:	n 										{(-1, df $1, df "text")}
-		| i n 									{(fi $1, df $2, df "text")}
+attr	:	n 										{(-1, df $1, df "▶text")}
+		| i n 									{(fi $1, df $2, df "▶text")}
 		| attr ':' n
 		{
 			let (i,a,t) = $1 in (i,a,).df $ case $3 of
-				"i"->"integer"
-				"I"->"bigint"
-				"s"->"serial"
-				"S"->"bigserial"
-				"f"->"real"
-				"F"->"double precision"
-				"t"->"text"
-				"j"->"json"
-				"b"->"bytea"
+				"i"->"▶integer"
+				"I"->"▶bigint"
+				"s"->"▶serial"
+				"S"->"▶bigserial"
+				"f"->"▶real"
+				"F"->"▶double precision"
+				"t"->"▶text"
+				"j"->"▶json"
+				"b"->"▶bytea"
 				x->x
 		}
 

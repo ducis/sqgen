@@ -1,0 +1,8 @@
+perl -0 -CS -pe 'use utf8;
+s/▶serial/int auto_increment/g;
+s/▶bigserial/bigint auto_increment/g;
+s/▶real/float/g;
+s/▶double precision/double/g;
+s/▶(text|json)/longtext/g;
+s/▶bytea/longblob/g;
+s/▶//g'

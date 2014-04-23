@@ -1,0 +1,1 @@
+perl -0 -CS -pe 'use utf8;s/▶//g'

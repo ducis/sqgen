@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <!--[if IE ]>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <![endif]-->
+    <title>MySQL ::   MySQL Workbench :: 12.5.4 PostgreSQL Type Mapping</title>
+
+    
+    <link rel="stylesheet" media="screen" href="/common/css/mysql.css?v=20140220" />
+    <link rel="stylesheet" media="projection" href="/common/css/mysql.css?v=20140220" />
+    <link rel="stylesheet" media="print" href="/common/css/print.css?v=20111230" />
+
+            <link rel="stylesheet" href="/doc/docs.css" />
+        
+    
+    
+    
+    <link rel="contents" href="index.html" title="MySQL Manual" /><link rel="start" href="index.html" title="MySQL Manual" /><link rel="prev" href="wb-migration-database-postgresql-connection.html" title="12.5.3 Connection Setup"/><link rel="next" href="wb-migration-database-mysql.html?ff=nopfpls" title="12.6 MySQL migration"/><link rel="up" href="wb-migration-database-postgresql.html" title="12.5 PostgreSQL migration"/>        <link rel="shortcut icon" href="/common/themes/sakila/favicon.ico" />
+
+        <script src="/common/js/clear_search_text.js"></script>
+
+    
+        
+    
+    
+</head>
+
+<body class="doc" >
+
+<div id="container">
+
+<!--UdmComment-->
+<a class="skipToContent" href="#mainContent">Skip navigation links</a>
+
+    <div id="header" >
+
+    <div class="left">
+
+    <div id="logo">
+                                            <a href="http://dev.mysql.com/" title="MySQL">
+                            <img src="/common/logos/logo-mysql-110x57.png" alt="MySQL" width="110" height="57" /></a>
+            </div>
+            <div id="tagline">The world's most popular open source database</div>
+
+    </div>
+
+    <div class="right">
+        
+        <div id="search_box"> <!-- Start Search -->
+        		<form id="searchform" name="searchform" method="get" action="http://search.oracle.com/search/search">
+			<input type="text" id="q" name="q" value="Search" class="swap_value" onfocus="clearSearchText();" />
+			<input type="hidden" id="search_dest" name="group" value="MySQL"/>
+			<input type="image" src="/common/themes/sakila/search_g.png" id="go" alt="Search" title="Search" />
+		    </form>        </div> <!-- End Search -->
+
+                <div id="login" >
+                     <p><a href="https://dev.mysql.com/auth/login/?dest=http%3a%2f%2fdev.mysql.com%2Fdoc%2Fworkbench%2Fen%2Fwb-migration-database-postgresql-typemapping.html">Login</a> | <a href="https://dev.mysql.com/auth/register/">Register</a></p>
+                </div>
+    </div>
+
+    </div> 
+
+    <!-- MySQL Navigation -->
+    <div id="nav_container">
+
+    <div id="flags">
+        <ul>
+            <li style="position:relative; top:-5px;">
+                <!-- Icons from http://icondock.com/free/vector-social-media-icons //-->
+                <a href="http://www.facebook.com/mysql"><img src="/common/icons/facebook.png" alt="Facebook" title="Join us on Facebook" width="20" height="20" /></a>&nbsp;
+                <a href="https://plus.google.com/+mysql"><img src="/common/icons/googleplus.png" alt="Google+" title="Join Google+ to follow MySQL" width="20" height="20" /></a>&nbsp;
+                <a href="https://twitter.com/#!/mysql"><img src="/common/icons/twitter.png" alt="Twitter" title="Follow us on Twitter" width="20" height="20" /></a>&nbsp;
+                <a href="http://www.youtube.com/mysqlchannel"><img src="/common/icons/youtube.png" alt="YouTube" title="Visit our YouTube channel" width="20" height="20" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </li>
+                            <br />
+                        </ul>
+    </div>
+    
+                        <div id="tab_last">
+        <ul>
+            <li class="first"><a href="http://dev.mysql.com">Developer Zone</a></li>
+            <li class="second"><a href="http://dev.mysql.com/downloads/">Downloads</a></li>
+            <li class="current"><a href="http://dev.mysql.com/doc/">Documentation</a></li>
+        </ul>
+        </div>
+            
+
+
+    <div id="mysql_menu">
+        <ul>
+	<li class="link"><a  href="/doc/">MySQL Server</a>
+	
+		
+		
+	</li>
+	
+	<li class="link"><a  href="/doc/index-enterprise.html">MySQL Enterprise</a>
+	
+		
+		
+	</li>
+	
+	<li class="current"><a class="current " href="/doc/index-gui.html">MySQL Workbench</a>
+	
+		
+		
+	</li>
+	
+	<li class="link"><a  href="/doc/index-cluster.html">MySQL Cluster</a>
+	
+		
+		
+	</li>
+	
+	<li class="link"><a  href="/doc/index-connectors.html">MySQL Connectors</a>
+	
+		
+		
+	</li>
+	
+	<li class="link"><a  href="/doc/index-topic.html">Topic Guides</a>
+	
+		
+		
+	</li>
+	
+	<li class="link"><a  href="/doc/index-expert.html">Expert Guides</a>
+	
+		
+		
+	</li>
+	
+	<li class="link"><a  href="/doc/index-other.html">Other Docs</a>
+	
+		
+		
+	</li>
+	
+	<li class="link"><a  href="/doc/index-archive.html">Archives</a>
+	
+		
+		
+	</li>
+	
+	<li class="link last"><a  href="/doc/index-about.html">About</a>
+	
+		
+		
+	</li>
+	
+</ul>
+    </div>
+
+        <div id="og_sakila">&nbsp;</div>
+            <div id="og_title">&nbsp;</div>
+
+    </div>
+    <!-- End Navigation Container -->
+
+<!--/UdmComment-->
+
+<div class="page_container">
+    <div class="page_sidebar">
+	<!--UdmCommentTest-->
+
+	<div id="menu_title"></div>
+
+	<div id="menu">
+		<ul>
+			<li class="current"><a class="current subitems" href="/doc/index.html">Documentation Library</a>
+
+			<ul class="subitems1">
+				 <li><a href="index.html"><b>Table of Contents</b></a>
+
+
+				 <ul class="subitems2">
+				 
+				 					 		<li>
+					 	<a href="" >MySQL 5.7 Manual</a>  					
+				 	</li>
+
+				 
+				 					 		<li>
+					 	<a href="" >MySQL 5.6 Manual</a>  					
+				 	</li>
+
+				 
+				 					 		<li>
+					 	<a href="" >MySQL 5.5 Manual</a>  					
+				 	</li>
+
+				 
+				 					 		<li>
+					 	<a href="" >MySQL 5.1 Manual</a>  					
+				 	</li>
+
+				 
+				 					 		<li>
+					 	<a href="" >MySQL 5.0 Manual</a>  					
+				 	</li>
+
+				 
+				 					 		<li>
+					 	<a href="" >MySQL 3.23/4.0/4.1 Manual</a>  					
+				 	</li>
+
+				 
+				 </ul>
+
+
+
+				 </li>
+
+
+			</ul>
+
+
+			</li>
+		</ul>
+
+	 <div class="searchmanual">
+			<form action="http://search.oracle.com/search/search" method="get" id="docsearch">
+		<strong><label for="searchq">Search manual:</label></strong>
+		<br />
+		<input id="searchq" type="text" name="q" value="" size="14" />
+		<input id="searchsubmit" type="submit" value="Go" />
+		<input id="searchgroup" type="hidden" name="group" value="MySQL" />
+	</form>	 </div>
+
+
+	</div>
+
+	
+</div>  
+<!-- Main content -->
+
+<div id="page" class="sidebar" >
+
+    
+
+
+
+
+	<!--UdmComment-->
+
+<div id="docheader"><a href="index.html"> MySQL Workbench</a> :: <a href="wb-migration.html">12 Database Migration Wizard</a> :: <a href="wb-migration-database-postgresql.html">12.5 PostgreSQL migration</a> :: 12.5.4 PostgreSQL Type Mapping</div>
+
+	 
+	
+
+	
+<script language="javascript">
+
+<!--
+function toggle(what){
+ if(document.getElementById(what).style.display == "none"){
+   document.getElementById(what).style.display = "block";
+ }else{
+   document.getElementById(what).style.display = "none";
+ }
+}
+//-->
+
+</script>
+<noscript></noscript>
+
+<div style="float: right; width: 250px; margin: 0px 0px 8px 8px; background: white">
+	<div style="text-align: right; font-size: 90%; margin-bottom: 4px">
+		<div style="text-align: left;"><a style="text-decoration: none" href="wb-migration-database-postgresql-connection.html" title="Previous Section">&laquo; 12.5.3 Connection Setup</a></div>
+		<hr size="1" noshade="noshade" align="center" width="40" style="margin: 0px auto 2px auto" />		<a style="text-decoration: none" href="wb-migration-database-mysql.html" title="Next Section">12.6 MySQL migration  &raquo;</a>	</div>
+	<div style="padding: 4px 0px 0px 4px; border: 2px dotted #ccc; border-right: none;">
+		<b>Section Navigation</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small>[<a href="#" onclick="toggle('sectionnav');"  onkeypress="if (event.keyCode == 13) { toggle('sectionnav'); }">Toggle</a>]</small>
+			<ul id="sectionnav">
+				<li class="p"><a href="wb-migration-database-postgresql.html">12.5 PostgreSQL migration</a></li><li><a href="wb-migration-database-postgresql-prepare.html">12.5.1 Preparations</a></li>
+<li><a href="wb-migration-database-postgresql-drivers.html">12.5.2 Drivers</a></li>
+<li><a href="wb-migration-database-postgresql-connection.html">12.5.3 Connection Setup</a></li>
+<li class="self">12.5.4 PostgreSQL Type Mapping</li>
+</ul>
+
+			</ul>		
+	</div>
+
+</div>
+<!--/UdmComment-->
+
+<div class="section">
+
+<div class="titlepage">
+<div>
+<div>
+<h3 class="title"><a name="wb-migration-database-postgresql-typemapping"></a>12.5.4 PostgreSQL Type Mapping</h3>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="table">
+<a name="wb-migration-database-postgresql-typemapping-table"></a><p class="title"><b>Table 12.3 Type mapping</b></p>
+<div class="table-contents">
+<table summary="Type mapping" border="1"><colgroup><col><col><col></colgroup><thead><tr><th scope="col">Source Type</th><th scope="col"><a class="ulink" href="http://dev.mysql.com/doc/refman/5.6/en/data-types.html" target="_top">MySQL Type</a></th><th scope="col">Comment</th></tr></thead><tbody><tr><td scope="row">INT</td><td>INT</td><td> </td></tr><tr><td scope="row">SMALLINT</td><td>SMALLINT</td><td> </td></tr><tr><td scope="row">BIGINT</td><td>BIGINT</td><td> </td></tr><tr><td scope="row">SERIAL</td><td>INT</td><td>Sets AUTO_INCREMENT in its table definition.</td></tr><tr><td scope="row">SMALLSERIAL</td><td>SMALLINT</td><td>Sets AUTO_INCREMENT in its table definition.</td></tr><tr><td scope="row">BIGSERIAL</td><td>BIGINT</td><td>Sets AUTO_INCREMENT in its table definition.</td></tr><tr><td scope="row">BIT</td><td>BIT</td><td> </td></tr><tr><td scope="row">BOOLEAN</td><td>TINYINT(1)</td><td> </td></tr><tr><td scope="row">REAL</td><td>FLOAT</td><td> </td></tr><tr><td scope="row">DOUBLE PRECISION</td><td>DOUBLE</td><td> </td></tr><tr><td scope="row">NUMERIC</td><td>DECIMAL</td><td> </td></tr><tr><td scope="row">DECIMAL</td><td>DECIMAL</td><td> </td></tr><tr><td scope="row">MONEY</td><td>DECIMAL(19,2)</td><td> </td></tr><tr><td scope="row">CHAR</td><td>CHAR/LONGTEXT</td><td>Depending on its length. MySQL Server 5.5 and above can have CHAR
+                columns with a length up to 255 characters. Anything
+                larger is migrated as LONGTEXT</td></tr><tr><td scope="row">NATIONAL CHARACTER</td><td>CHAR/LONGTEXT</td><td>Depending on its length. MySQL Server 5.5 and above can have VARCHAR
+                columns with a length up to 65535 characters. Anything
+                larger is migrated to one of the TEXT blob types. In
+                MySQL, character set of strings depend on the column
+                character set instead of the datatype.</td></tr><tr><td scope="row">VARCHAR</td><td>VARCHAR/MEDIUMTEXT/LONGTEXT</td><td>Depending on its length. MySQL Server 5.5 and above can have VARCHAR
+                columns with a length up to 65535 characters. Anything
+                larger is migrated to one of the TEXT blob types.</td></tr><tr><td scope="row">NATIONAL CHARACTER VARYING</td><td>VARCHAR/MEDIUMTEXT/LONGTEXT</td><td>Depending on its length. MySQL Server 5.5 and above can have VARCHAR
+                columns with a length up to 65535 characters. Anything
+                larger is migrated to one of the TEXT blob types. In
+                MySQL, character set of strings depend on the column
+character set instead of the datatype.</td></tr><tr><td scope="row">DATE</td><td>DATE</td><td> </td></tr><tr><td scope="row">TIME</td><td>TIME</td><td> </td></tr><tr><td scope="row">TIMESTAMP</td><td>DATETIME</td><td> </td></tr><tr><td scope="row">INTERVAL</td><td>TIME</td><td> </td></tr><tr><td scope="row">BYTEA</td><td>LONGBLOB</td><td> </td></tr><tr><td scope="row">TEXT</td><td>LONGTEXT</td><td> </td></tr><tr><td scope="row">CIDR</td><td>VARCHAR(43)</td><td> </td></tr><tr><td scope="row">INET</td><td>VARCHAR(43)</td><td> </td></tr><tr><td scope="row">MACADDR</td><td>VARCHAR(17)</td><td> </td></tr><tr><td scope="row">UUID</td><td>VARCHAR(36)</td><td> </td></tr><tr><td scope="row">XML</td><td>LONGTEXT</td><td> </td></tr><tr><td scope="row">JSON</td><td>LONGTEXT</td><td> </td></tr><tr><td scope="row">TSVECTOR</td><td>LONGTEXT</td><td> </td></tr><tr><td scope="row">TSQUERY</td><td>LONGTEXT</td><td> </td></tr><tr><td scope="row">ARRAY</td><td>LONGTEXT</td><td> </td></tr><tr><td scope="row">POINT</td><td>VARCHAR</td><td> </td></tr><tr><td scope="row">LINE</td><td>VARCHAR</td><td> </td></tr><tr><td scope="row">LSEG</td><td>VARCHAR</td><td> </td></tr><tr><td scope="row">BOX</td><td>VARCHAR</td><td> </td></tr><tr><td scope="row">PATH</td><td>VARCHAR</td><td> </td></tr><tr><td scope="row">POLYGON</td><td>VARCHAR</td><td> </td></tr><tr><td scope="row">CIRCLE</td><td>VARCHAR</td><td> </td></tr><tr><td scope="row">TXID_SNAPSHOT</td><td>VARCHAR</td><td> </td></tr></tbody></table>
+</div>
+
+</div>
+<br class="table-break">
+</div>
+
+</div>
+<div class="copyright-footer">
+<p>
+    Copyright © 2006, 2014, Oracle and/or its affiliates. All
+    rights reserved.
+<a href="wb-preface.html#legalnotice">Legal Notices</a></p>
+</div>
+<!--UdmComment--><div id="docnav"><a rel="prev" href="wb-migration-database-postgresql-connection.html" title="12.5.3 Connection Setup">Previous</a> / <a rel="next" href="wb-migration-database-mysql.html" title="12.6 MySQL migration">Next</a> / <a rel="up" href="wb-migration-database-postgresql.html" title="12.5 PostgreSQL migration">Up</a> / <a rel="contents" href="index.html">Table of Contents</a></div><!--/UdmComment--><br class="clear" /><!--UdmComment--><div id="comments"><h1>User Comments</h1><p><form method="POST" action="/doc/mysql/comment.php">
+          <input type="hidden" name="sect" value="wb-migration-database-postgresql-typemapping" />
+          <input type="hidden" name="return" value="/doc/workbench/en/wb-migration-database-postgresql-typemapping.html" />
+          <input type="submit" value="Add your own comment" />
+          </form></p></div><!--UdmComment--><div id="docnav"><a href="#">Top</a> / <a rel="prev" href="wb-migration-database-postgresql-connection.html" title="12.5.3 Connection Setup">Previous</a> / <a rel="next" href="wb-migration-database-mysql.html" title="12.6 MySQL migration">Next</a> / <a rel="up" href="wb-migration-database-postgresql.html" title="12.5 PostgreSQL migration">Up</a> / <a rel="contents" href="index.html">Table of Contents</a></div><!--/UdmComment--></div></div>
+
+
+
+
+
+</div> <!--End Container -->
+
+
+
+
+ </div> 
+</div> 
+<div id="footer">
+
+    <div class="links">
+        <ul>
+            <li class="top"><a href="http://dev.mysql.com">Developer Zone</a></li>
+	    <li><a href="http://dev.mysql.com/doc/">Documentation</a></li>
+            <li><a href="http://dev.mysql.com/articles/">Developer Articles</a></li>
+            <li><a href="http://forums.mysql.com/">Forums</a></li>
+			<li><a href="http://lists.mysql.com/">Lists</a></li>
+            <li><a href="http://bugs.mysql.com/">Bugs</a></li>
+            <li><a href="http://dev.mysql.com/worklog/">Worklog</a></li>
+			            <li><a href="http://planet.mysql.com/">Planet MySQL</a></li>
+			            <li><a href="http://labs.mysql.com/">Labs</a></li>
+        </ul>
+    </div>
+
+    <div class="links">
+        <ul>
+            <li class="top"><a href="http://dev.mysql.com/downloads/">Downloads</a></li>
+            <li><a href="http://dev.mysql.com/downloads/mysql/">MySQL Community Server</a></li>
+            <li><a href="http://dev.mysql.com/downloads/mysql-proxy/">MySQL Proxy</a></li>
+            <li><a href="http://dev.mysql.com/downloads/cluster/">MySQL Cluster</a></li>
+            <li><a href="http://dev.mysql.com/downloads/workbench/">MySQL Workbench</a></li>
+            <li><a href="http://dev.mysql.com/downloads/connector/">MySQL Connectors</a></li>
+            <li><a href="http://downloads.mysql.com/archives/">Archives</a></li>
+        </ul>
+    </div>
+
+    <div class="links">
+        <ul>
+            <li class="top"><a href="http://dev.mysql.com/doc/">Documentation</a></li>
+            <li><a href="http://dev.mysql.com/doc/">MySQL Reference Manuals</a></li>
+            <li><a href="http://dev.mysql.com/doc/index-gui.html">MySQL Workbench</a></li>
+            <li><a href="http://dev.mysql.com/doc/index-expert.html">Expert Guides</a></li>
+            <li><a href="http://dev.mysql.com/doc/index-topic.html">Topic Guides</a></li>
+            <li><a href="http://dev.mysql.com/doc/index-cluster.html">MySQL Cluster</a></li>
+            <li><a href="http://dev.mysql.com/doc/index-other.html">Other Documents</a></li>
+            <li><a href="http://dev.mysql.com/doc/index-about.html">About</a></li>
+            <li><a href="http://dev.mysql.com/doc/index-archive.html">Archives</a></li>
+        </ul>
+    </div>
+
+
+    <div class="links">
+        <ul>
+            <li class="top"><a href="http://www.mysql.com/about/">About MySQL</a></li>
+            <li><a href="http://www.mysql.com/about/contact/">Contact Us</a></li>
+                         <li><a href="http://www.mysql.com/buy-mysql/">How to Buy</a></li>
+			<li><a href="http://www.mysql.com/partners/">Partners</a></li>
+            <li><a href="http://www.mysql.com/about/jobs/">Job Opportunities</a></li>
+            <li><a href="http://www.mysql.com/sitemap.html">Site Map</a></li>
+	            </ul>
+	</div>
+
+	<div class="links">
+		<ul>
+			<li class="top"><a href="http://www.mysql.com/about/legal/">Legal</a></li>
+			<li><a href="http://www.mysql.com/about/legal/">Legal Policies</a></li>
+			<li><a href="http://www.oracle.com/us/legal/privacy/index.htm">Your Privacy Rights</a></li>
+			<li><a href="http://www.oracle.com/us/legal/terms/index.html">Terms of Use</a></li>
+			<li><a href="http://www.oracle.com/us/legal/third-party-trademarks/index.html">Trademark Policy</a></li>
+			<li><a href="http://www.oracle.com/technetwork/community/oca-486395.html">Contributor Agreement</a></li>
+		</ul>
+	</div>
+
+
+    <div id="search" class="en">
+	        <form id="footer_search" action="http://search.oracle.com/search/search" method="get">
+            <input type="text" id="f_q" name="q" value="" class="swap_value" onfocus="clearSearchText();" />
+	    <input type="hidden"  name="group" value="MySQL"/>
+	    <input type="image" src="/common/themes/sakila/footer_search_g.png" id="f_go" alt="Search" title="Search" />
+        </form>    </div>
+
+</div><!-- End Footer -->
+		<div id="copyright-oracle"><a href="http://www.oracle.com/"><img src="/common/logos/logo-oracle-red-91x22.gif" alt="Oracle" width="91" height="22" /></a>&nbsp;&nbsp;<span>&copy; 2014, Oracle Corporation and/or its affiliates</span></div>
+
+
+<script src="/common/js/metrics/s_code_remote.js"></script>
+
+</body>
+</html>
