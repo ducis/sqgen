@@ -53,6 +53,7 @@ attr	:	n 										{(-1, df $1, df "▶text")}
 				"t"->"▶text"
 				"j"->"▶json"
 				"b"->"▶bytea"
+				"p"->"▶timestamp"
 				x->x
 		}
 

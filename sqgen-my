@@ -5,4 +5,5 @@ s/▶real/float/g;
 s/▶double precision/double/g;
 s/▶(text|json)/longtext/g;
 s/▶bytea/longblob/g;
+s/▶timestamp/datetime/g;
 s/▶//g'
